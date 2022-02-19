@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-app';
+
+  constructor(private appService: AppService) { }
+
+  ngOnInit(): void {
+    this.appService.getNobleResults().subscribe(
+      data => {
+        console.log(data);
+        
+      })
+  }
+
 }
